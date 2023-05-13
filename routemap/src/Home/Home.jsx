@@ -92,6 +92,7 @@ const Home = () => {
         destinationRef.current.value = ''
     }
 
+    console.log(waypoints)
 
     
   return (
@@ -118,8 +119,14 @@ const Home = () => {
                     <input type="text" placeholder='waypoints' ref={waypointRef}/>
                     </Autocomplete>
                     <button className='waypoint-btn' onClick={handleAddWaypoint}><AiOutlinePlusCircle /> Add another stop</button>
+
                 </div>
 
+                <div className='display-waypoints'>
+                {waypoints.map((waypoint, index) => (
+                    <div key={index}>{waypoint.location}</div>
+                ))}
+                </div>
 
                 <Autocomplete>
                 <input type="text" placeholder='Destination' ref={destinationRef}/>

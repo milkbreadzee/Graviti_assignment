@@ -80,6 +80,14 @@ input{
 
 }
 
+.display-waypoints{
+    color: #1B31A8;
+    font-family: 'VT323', monospace;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+}
 
 .waypoint-btn{
     background-color: #f4f8fa;
