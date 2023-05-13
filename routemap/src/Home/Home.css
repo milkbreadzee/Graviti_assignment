@@ -165,7 +165,11 @@ input{
 
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
+
+    .heading{
+        margin-top: 35%;
+    }
 
     input{
         width: 100%;
@@ -216,6 +220,10 @@ input{
 
 
 @media (max-width: 320px) {
+
+    .heading{
+        margin-top: 40%;
+    }
     .content-container{
         display: flex;
         flex-direction: column-reverse;

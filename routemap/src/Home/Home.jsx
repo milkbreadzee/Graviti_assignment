@@ -67,8 +67,8 @@ const Home = () => {
             }
             });
         });
-        setOrigin(results.origin);
-        setDestination(results.destination);
+        setOrigin(originRef.current.value);
+        setDestination(destinationRef.current.value);
         setLoading(false);
         setDirectionsRes(results);
         setDistance(results.routes[0].legs[0].distance.text);
@@ -157,7 +157,7 @@ const Home = () => {
 
                 <div className='distance-text'>
                     {!loading ? (
-                        <p>The distance between {origin} and {destination} via the seleted route is {distance} kms.</p>
+                        <p>The distance between {origin} and {destination}<br /> via the seleted route is {distance} kms.</p>
                     ) : (
                         <p>Please select a route.</p>
                     )}
