@@ -152,7 +152,7 @@ const Home = () => {
 
                 <div className="distance-number">
                     <p>Distance</p>
-                    <p>{distance}</p>
+                    <p className='distance-style-number'>{distance}</p>
                 </div>
 
                 <div className='distance-text'>
