@@ -80,7 +80,15 @@ input{
 
 }
 
-button{
+
+.waypoint-btn{
+    background-color: #f4f8fa;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.calc-btn{
     background: #1B31A8;
     border-radius: 32px;
     color: white;
