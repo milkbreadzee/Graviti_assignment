@@ -5,9 +5,6 @@ import {FaDotCircle} from "react-icons/fa"
 import "./Home.css"
 const Home = () => {
 
-    // const waypoints = [
-    //     { location: 'Thodupuzha, Kerala, India' },
-    //   ];
 
     const google = window.google;
 
@@ -19,16 +16,16 @@ const Home = () => {
     const [time, setTime] = useState('')
     const [routes, setRoutes] = useState([])
     const [waypoints, setWaypoints] = useState([]);
-    // const [currentWaypoint, setCurrentWaypoint] = useState('');
+
+    const [originloc, setOriginLoc] = useState({ lat: 0, lng: 0 });
+    const [destinationloc, setDestinationLoc] = useState({ lat: 0, lng: 0 });
 
 
-
-    // waypoints.forEach((waypoint, index) => {
-    //     console.log(waypoint.location);
-    //   });
     const originRef = useRef()
     const destinationRef = useRef()
     const waypointRef = useRef()
+
+    
 
     const {isLoaded} = useJsApiLoader({
             googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -68,6 +65,7 @@ const Home = () => {
             }
             });
         });
+        // console.log(results)
         setOrigin(originRef.current.value);
         setDestination(destinationRef.current.value);
         setLoading(false);
@@ -75,6 +73,18 @@ const Home = () => {
         setDistance(results.routes[0].legs[0].distance.text);
         setTime(results.routes[0].legs[0].duration.text);
         setRoutes(results.routes);
+
+        const originLatLng = results.routes[0].legs[0].start_location;
+        const destinationLatLng = results.routes[0].legs[0].end_location;
+
+        console.log('Origin Latitude:', originLatLng.lat());
+        console.log('Origin Longitude:', originLatLng.lng());
+
+        console.log('Destination Latitude:', destinationLatLng.lat());
+        console.log('Destination Longitude:', destinationLatLng.lng());
+
+        setOriginLoc(results.routes[0].legs[0].start_location)
+        setDestinationLoc(results.routes[0].legs[0].end_location)
     }
 
     const handleAddWaypoint = () => {
@@ -94,6 +104,16 @@ const Home = () => {
     }
 
     console.log(waypoints)
+
+    const originMarkerIcon = {
+        url: '../assets/button.png',
+        scaledSize: new window.google.maps.Size(30, 30),
+        origin: new google.maps.Point(0, 0),
+        anchor: google.maps.Point(15, 15),
+        };
+
+    
+
 
     
   return (
@@ -182,6 +202,7 @@ const Home = () => {
             >
 
                 <Marker position={center}/>
+                <Marker position={originloc} icon={originMarkerIcon} />
                 {directionsRes && <DirectionsRenderer directions={directionsRes}/>}                 
             </GoogleMap>
         </div>
