@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import {useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, DirectionsService} from "@react-google-maps/api"
 import {AiOutlinePlusCircle} from "react-icons/ai"
+import {FaDotCircle} from "react-icons/fa"
 import "./Home.css"
 const Home = () => {
 
@@ -116,7 +117,7 @@ const Home = () => {
                 <div className="waypoints">
 
                     <Autocomplete>
-                    <input type="text" placeholder='waypoints' ref={waypointRef}/>
+                    <input type="text" placeholder='Waypoints' ref={waypointRef} />
                     </Autocomplete>
                     <button className='waypoint-btn' onClick={handleAddWaypoint}><AiOutlinePlusCircle /> Add another stop</button>
 
