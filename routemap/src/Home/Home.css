@@ -54,10 +54,8 @@
 .location-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    gap: 5rem;
-    width: 100%;
+    width: 40vw;
 }
 
 .location-inputs{
@@ -66,7 +64,9 @@
     /* justify-content: flex-start;
     align-items: center; */
     gap: 1rem;
-    width: 100%
+    width: 100%;
+    padding-left: 3rem;
+    padding-right: 3rem;
     
 }
 .location-buttons{
@@ -76,6 +76,20 @@
     align-items: center;
     gap: 1rem;
  
+}
+
+.origin{
+    width: 100%;
+}
+
+label{
+    font-family: 'VT323', monospace;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    padding-left: 0.2rem;
+    padding-bottom: 0.2rem;
+
 }
 
 input{
@@ -88,10 +102,17 @@ input{
     font-family: 'Work Sans', sans-serif;
     padding-left: 5%;
     box-sizing: border-box;
-
+    width: 13rem;
 }
 
+.waypoints{
+    position: relative;
+}
+
+
+
 .display-waypoints{
+    
     color: #1B31A8;
     font-family: 'VT323', monospace;
     font-family: 'Work Sans', sans-serif;
@@ -101,10 +122,13 @@ input{
 }
 
 .waypoint-btn{
+    /* position: absolute;
+    right: 0; */
     background-color: #f4f8fa;
     border: none;
     display: flex;
     justify-content: center;
+
 }
 
 .calc-btn{
@@ -112,14 +136,19 @@ input{
     border-radius: 32px;
     color: white;
     border: #1B31A8 1px solid;
-    padding: 15%;
+    padding: 1rem 1.5rem;
     font-family: 'VT323', monospace;
     font-family: 'Work Sans', sans-serif;
+    /* margin: 10%; */
+    margin-right: 3rem;
 }
 
 .distance{
     border-radius: 8px;
     border: #DCDDEC 1px solid;
+    margin-left: 3rem;
+    margin-right: 3rem;
+
 }
 
 .distance-number{
@@ -172,7 +201,7 @@ input{
     }
 
     input{
-        width: 100%;
+        width: 100% !important;
     }
 
     .home{
@@ -195,6 +224,7 @@ input{
         justify-content: center;
         align-items: center;
         margin-bottom: 8%;
+        width: 100%;
     }
 
     .location-container{
@@ -202,6 +232,7 @@ input{
         flex-direction: column;
         gap: 1rem;
         margin-bottom: 5%;
+        width: 100%;
     }
 
     .distance{
@@ -221,7 +252,7 @@ input{
 
 @media (max-width: 320px) {
 
-    .heading{
+    .heading{   
         margin-top: 40%;
     }
     .content-container{

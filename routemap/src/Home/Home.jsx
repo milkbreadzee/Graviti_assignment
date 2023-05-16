@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import {useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, DirectionsService} from "@react-google-maps/api"
+import {useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, DirectionsService, MarkerF} from "@react-google-maps/api"
 import {AiOutlinePlusCircle} from "react-icons/ai"
 import {FaDotCircle} from "react-icons/fa"
 import "./Home.css"
@@ -111,6 +111,14 @@ const Home = () => {
         origin: new google.maps.Point(0, 0),
         anchor: google.maps.Point(15, 15),
         };
+    
+
+    
+    const CustomMarker = () => {
+        return (
+        <Marker position={originloc} icon={originMarkerIcon} />
+        );
+    };
 
     
 
@@ -130,17 +138,24 @@ const Home = () => {
             <div className="location-container">
 
                 <div className="location-inputs">
+                <div className="origin">
+                    <label htmlFor="1">Origin</label>
+                    <div className="input-container">
                 <Autocomplete>
-                <input type="text" placeholder='Origin' ref={originRef}/>
+                <input type="text" placeholder='Origin' id='1' ref={originRef} />
                 </Autocomplete>
+                </div>
+                </div>
+               
 
                 <div className="waypoints">
-
+                    <label htmlFor="2">Stop</label>
+                    <div className='waypoint-input-container'>
                     <Autocomplete>
-                    <input type="text" placeholder='Waypoints' ref={waypointRef} />
+                    <input type="text" placeholder='Waypoints' id='2' ref={waypointRef} />
                     </Autocomplete>
                     <button className='waypoint-btn' onClick={handleAddWaypoint}><AiOutlinePlusCircle /> Add another stop</button>
-
+                    </div>
                 </div>
 
                 <div className='display-waypoints'>
@@ -149,9 +164,13 @@ const Home = () => {
                 ))}
                 </div>
 
+                <div className="destination">
+                    <label htmlFor="3">Destination</label>
                 <Autocomplete>
-                <input type="text" placeholder='Destination' ref={destinationRef}/>
+                <input type="text" placeholder='Destination' id='3' ref={destinationRef} />
                 </Autocomplete>
+                </div>
+               
 
                 </div>
 
@@ -196,14 +215,15 @@ const Home = () => {
                 options={{
                     streetViewControl:false,
                     mapTypeControl:false,
-                    fullscreenControl: false
-                    
+                    fullscreenControl: false,
+                    // disableDefaultUI: true,                    
                 }}
             >
 
                 <Marker position={center}/>
-                <Marker position={originloc} icon={originMarkerIcon} />
-                {directionsRes && <DirectionsRenderer directions={directionsRes}/>}                 
+                <MarkerF />
+                {directionsRes && <DirectionsRenderer directions={directionsRes}/>}     
+                {/* <CustomMarker />             */}
             </GoogleMap>
         </div>
         </div>
