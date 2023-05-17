@@ -3,6 +3,11 @@ import {useJsApiLoader, GoogleMap, Marker, Autocomplete, DirectionsRenderer, Dir
 import {AiOutlinePlusCircle} from "react-icons/ai"
 import {FaDotCircle} from "react-icons/fa"
 import "./Home.css"
+import button from "../assets/location-pin.png"
+import originIcon from "../assets/OriginIcon.png"
+import destinationIcon from "../assets/DestinationIcon.png"
+import stopIcon from "../assets/StopIcon.png"
+
 const Home = () => {
 
 
@@ -85,6 +90,17 @@ const Home = () => {
 
         setOriginLoc(results.routes[0].legs[0].start_location)
         setDestinationLoc(results.routes[0].legs[0].end_location)
+
+        // const waypoints = results.routes[0].legs[0].steps.map((step) => ({
+        //     lat: step.end_location.lat(),
+        //     lng: step.end_location.lng(),
+        //   }));
+        
+        // waypoints.forEach((waypoint) => {
+        // const { lat, lng } = waypoint;
+        // console.log('Waypoint Latitude:', lat);
+        // console.log('Waypoint Longitude:', lng);
+        // });
     }
 
     const handleAddWaypoint = () => {
@@ -103,7 +119,6 @@ const Home = () => {
         destinationRef.current.value = ''
     }
 
-    console.log(waypoints)
 
     const originMarkerIcon = {
         url: '../assets/button.png',
@@ -114,12 +129,7 @@ const Home = () => {
     
 
     
-    const CustomMarker = () => {
-        return (
-        <Marker position={originloc} icon={originMarkerIcon} />
-        );
-    };
-
+    
     
 
 
@@ -216,14 +226,44 @@ const Home = () => {
                     streetViewControl:false,
                     mapTypeControl:false,
                     fullscreenControl: false,
-                    // disableDefaultUI: true,                    
+                    disableDefaultUI: true,                    
                 }}
             >
 
-                <Marker position={center}/>
-                <MarkerF />
+                <MarkerF position={center} clickable={false} icon={{
+                    url:button,
+                    scaledSize: new window.google.maps.Size(30, 30),
+                }}/>
+
+                <MarkerF position={originloc} clickable={false}  icon={{
+                    url:originIcon,
+                    scaledSize: new window.google.maps.Size(20, 20),
+                }}
+                zIndex={10}
+                onDrag={true}
+                onZindexChanged={()=>{}}
+                />
+
+                <MarkerF position={destinationloc} clickable={false}  icon={{
+                    url:destinationIcon,
+                    scaledSize: new window.google.maps.Size(20, 20),
+                }}
+                zIndex={10}
+                onDrag={true}
+                onZindexChanged={()=>{}}
+                />
+
+                {/* <MarkerF position={} clickable={false}  icon={{
+                    url:stopIcon,
+                    scaledSize: new window.google.maps.Size(20, 20),
+                }}
+                zIndex={10}
+                onDrag={true}
+                onZindexChanged={()=>{}}
+                /> */}
+
+
                 {directionsRes && <DirectionsRenderer directions={directionsRes}/>}     
-                {/* <CustomMarker />             */}
             </GoogleMap>
         </div>
         </div>

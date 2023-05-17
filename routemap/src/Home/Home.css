@@ -7,6 +7,7 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 .home{
     height: calc(100vh - 100px);
@@ -64,9 +65,9 @@
     /* justify-content: flex-start;
     align-items: center; */
     gap: 1rem;
-    width: 100%;
     padding-left: 3rem;
     padding-right: 3rem;
+    width: 100%;
     
 }
 .location-buttons{
@@ -194,10 +195,13 @@ input{
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 955px) {
+
+    
 
     .heading{
         margin-top: 35%;
+        display: none;
     }
 
     input{
@@ -209,9 +213,10 @@ input{
         height: 100vh;
     }
     .render-map-box{
-        height: 40vh;
+        height: 50vh;
         width: 95vw;
         margin: 5%;
+        margin-top: 20rem;
     }
     .content-container{
         display: flex;
@@ -233,6 +238,11 @@ input{
         gap: 1rem;
         margin-bottom: 5%;
         width: 100%;
+        overflow: hidden;
+    }
+
+    .location-inputs{
+        width: 100%;
     }
 
     .distance{
@@ -253,11 +263,12 @@ input{
 @media (max-width: 320px) {
 
     .heading{   
-        margin-top: 40%;
+        display: none;
     }
     .content-container{
         display: flex;
         flex-direction: column-reverse;
     }
+
 }
 
